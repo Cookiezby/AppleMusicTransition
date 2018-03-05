@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		76774FCF204D7176008B6F3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FCE204D7176008B6F3D /* AppDelegate.swift */; };
-		76774FD1204D7176008B6F3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FD0204D7176008B6F3D /* ViewController.swift */; };
 		76774FD4204D7176008B6F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76774FD2204D7176008B6F3D /* Main.storyboard */; };
 		76774FD6204D7176008B6F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76774FD5204D7176008B6F3D /* Assets.xcassets */; };
 		76774FD9204D7176008B6F3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76774FD7204D7176008B6F3D /* LaunchScreen.storyboard */; };
 		76774FE4204D7176008B6F3D /* AppleMusicTransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FE3204D7176008B6F3D /* AppleMusicTransitionTests.swift */; };
+		76774FEF204D739F008B6F3D /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FEE204D739F008B6F3D /* TabBarViewController.swift */; };
+		76774FF2204D78DD008B6F3D /* PlayBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FF1204D78DD008B6F3D /* PlayBarView.swift */; };
+		76774FF5204D814D008B6F3D /* AMTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FF4204D814D008B6F3D /* AMTransitionAnimator.swift */; };
+		76774FF7204D84AB008B6F3D /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FF6204D84AB008B6F3D /* MusicDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +31,6 @@
 /* Begin PBXFileReference section */
 		76774FCB204D7176008B6F3D /* AppleMusicTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleMusicTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76774FCE204D7176008B6F3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		76774FD0204D7176008B6F3D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		76774FD3204D7176008B6F3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		76774FD5204D7176008B6F3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76774FD8204D7176008B6F3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +38,10 @@
 		76774FDF204D7176008B6F3D /* AppleMusicTransitionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppleMusicTransitionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76774FE3204D7176008B6F3D /* AppleMusicTransitionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicTransitionTests.swift; sourceTree = "<group>"; };
 		76774FE5204D7176008B6F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76774FEE204D739F008B6F3D /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		76774FF1204D78DD008B6F3D /* PlayBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBarView.swift; sourceTree = "<group>"; };
+		76774FF4204D814D008B6F3D /* AMTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMTransitionAnimator.swift; sourceTree = "<group>"; };
+		76774FF6204D84AB008B6F3D /* MusicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +83,11 @@
 		76774FCD204D7176008B6F3D /* AppleMusicTransition */ = {
 			isa = PBXGroup;
 			children = (
+				76774FF3204D8131008B6F3D /* Animator */,
+				76774FF0204D78CC008B6F3D /* View */,
 				76774FCE204D7176008B6F3D /* AppDelegate.swift */,
-				76774FD0204D7176008B6F3D /* ViewController.swift */,
+				76774FEE204D739F008B6F3D /* TabBarViewController.swift */,
+				76774FF6204D84AB008B6F3D /* MusicDetailViewController.swift */,
 				76774FD2204D7176008B6F3D /* Main.storyboard */,
 				76774FD5204D7176008B6F3D /* Assets.xcassets */,
 				76774FD7204D7176008B6F3D /* LaunchScreen.storyboard */,
@@ -94,6 +103,22 @@
 				76774FE5204D7176008B6F3D /* Info.plist */,
 			);
 			path = AppleMusicTransitionTests;
+			sourceTree = "<group>";
+		};
+		76774FF0204D78CC008B6F3D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				76774FF1204D78DD008B6F3D /* PlayBarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		76774FF3204D8131008B6F3D /* Animator */ = {
+			isa = PBXGroup;
+			children = (
+				76774FF4204D814D008B6F3D /* AMTransitionAnimator.swift */,
+			);
+			path = Animator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,8 +224,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76774FD1204D7176008B6F3D /* ViewController.swift in Sources */,
+				76774FEF204D739F008B6F3D /* TabBarViewController.swift in Sources */,
+				76774FF5204D814D008B6F3D /* AMTransitionAnimator.swift in Sources */,
+				76774FF2204D78DD008B6F3D /* PlayBarView.swift in Sources */,
 				76774FCF204D7176008B6F3D /* AppDelegate.swift in Sources */,
+				76774FF7204D84AB008B6F3D /* MusicDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
