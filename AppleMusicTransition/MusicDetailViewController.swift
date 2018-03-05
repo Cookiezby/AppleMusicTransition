@@ -16,19 +16,20 @@ class MusicDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .groupTableViewBackground
         view.addSubview(coverImage)
-        
-        let coverWidth = view.bounds.width * 0.8
-        coverImage.frame = CGRect(x: (view.bounds.width - coverWidth) / 2, y: 30, width: coverWidth, height: coverWidth)
-        
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         view.addGestureRecognizer(tap)
     }
     
-    func preperForPresent() {
+    func frameBeforePresent() {
         coverImage.frame = CGRect(x: 20, y: 10, width: 50, height: 50)
+    }
+    
+    func frameAfterPresent() {
+        let coverWidth = view.bounds.width * 0.8
+        coverImage.frame = CGRect(x: (view.bounds.width - coverWidth) / 2, y: 30, width: coverWidth, height: coverWidth)
     }
 
     override func didReceiveMemoryWarning() {

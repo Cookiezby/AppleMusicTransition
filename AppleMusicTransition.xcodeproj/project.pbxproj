@@ -16,6 +16,7 @@
 		76774FF2204D78DD008B6F3D /* PlayBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FF1204D78DD008B6F3D /* PlayBarView.swift */; };
 		76774FF5204D814D008B6F3D /* AMTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FF4204D814D008B6F3D /* AMTransitionAnimator.swift */; };
 		76774FF7204D84AB008B6F3D /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FF6204D84AB008B6F3D /* MusicDetailViewController.swift */; };
+		76774FF9204D96FB008B6F3D /* AMPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FF8204D96FB008B6F3D /* AMPresentationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		76774FF1204D78DD008B6F3D /* PlayBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBarView.swift; sourceTree = "<group>"; };
 		76774FF4204D814D008B6F3D /* AMTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMTransitionAnimator.swift; sourceTree = "<group>"; };
 		76774FF6204D84AB008B6F3D /* MusicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailViewController.swift; sourceTree = "<group>"; };
+		76774FF8204D96FB008B6F3D /* AMPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMPresentationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				76774FF4204D814D008B6F3D /* AMTransitionAnimator.swift */,
+				76774FF8204D96FB008B6F3D /* AMPresentationController.swift */,
 			);
 			path = Animator;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				76774FF2204D78DD008B6F3D /* PlayBarView.swift in Sources */,
 				76774FCF204D7176008B6F3D /* AppDelegate.swift in Sources */,
 				76774FF7204D84AB008B6F3D /* MusicDetailViewController.swift in Sources */,
+				76774FF9204D96FB008B6F3D /* AMPresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

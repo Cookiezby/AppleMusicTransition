@@ -13,11 +13,11 @@ import UIKit
 class AMTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     var duration: TimeInterval
-    var isPresenting: Bool
+    var isPresenting: Bool = false
+    var snapView = UIView()
     
-    init(duration: TimeInterval, isPresenting: Bool) {
+    init(duration: TimeInterval) {
         self.duration = duration
-        self.isPresenting = isPresenting
         super.init()
     }
     
@@ -30,45 +30,47 @@ class AMTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         guard let toView = transitionContext.view(forKey: .to) else { return }
         guard var fromVC = transitionContext.viewController(forKey: .from) else { return }
         guard var toVC = transitionContext.viewController(forKey: .to) else { return }
-        if isPresenting {
-            toVC = toVC as! MusicDetailViewController
-        } else {
-            fromVC = fromVC as! MusicDetailViewController
-        }
-    
+       
         let container = transitionContext.containerView
-        let snapView = fromView.snapshotView(afterScreenUpdates: false)
-        if isPresenting {
-            if let snap = snapView {
-                container.addSubview(snap)
-            }
-            container.addSubview(toView)
-        } else {
-            container.insertSubview(toView, belowSubview: fromView)
-        }
         
-        if isPresenting {
-            toView.frame = fromView.frame.offsetBy(dx: 0, dy: fromView.bounds.height)
-        } else {
-            toView.frame = container.frame
-        }
+//        if isPresenting {
+//            let toVC = toVC as! MusicDetailViewController
+//            toVC.frameBeforePresent()
+//            let fromVC = fromVC as! TabBarViewController
+//
+//            toView.frame = CGRect(x: 0, y: container.bounds.height - 120, width: container.bounds.width, height: 70)
+//
+//            //snapView = fromView.snapshotView(afterScreenUpdates: false)!
+//            //container.addSubview(snapView)
+//            container.addSubview(toView)
+//
+//            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
+//                fromView.layer.cornerRadius = 10
+//                fromView.clipsToBounds = true
+//                fromView.transform = fromView.transform.scaledBy(x: 0.95, y: 0.95)
+//                fromView.transform = fromView.transform.translatedBy(x: 0, y: 20 - container.bounds.height * 0.05 / 2 )
+//                toView.frame = CGRect(x: 0, y: 35, width: container.bounds.width, height: container.bounds.height - 35)
+//                toView.layer.cornerRadius = 10
+//                toView.clipsToBounds = true
+//                toVC.frameAfterPresent()
+//                fromVC.tabBar.frame = fromVC.tabBar.frame.offsetBy(dx: 0, dy: fromVC.tabBar.bounds.height)
+//            }) { (_) in
+//                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+//            }
+//        } else {
+//            let fromVC = fromVC as! MusicDetailViewController
+//            let toVC = toVC as! TabBarViewController
+//
+//            container.insertSubview(toView, belowSubview: fromView)
+//            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseIn, animations: {
+//                toView.frame = container.frame
+//                fromView.frame = CGRect(x: 0, y: container.bounds.height - 120, width: container.bounds.width, height: 120)
+//                fromVC.frameBeforePresent()
+//            }, completion: { (_) in
+//                toView.isHidden = false
+//                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+//            })
+//        }
         
-        UIView.animate(withDuration: duration, animations: {
-            if self.isPresenting {
-                fromView.isHidden = true
-                guard let snap = snapView else { return }
-                snap.layer.cornerRadius = 10
-                snap.clipsToBounds = true
-                snap.transform = snap.transform.scaledBy(x: 0.95, y: 0.95)
-                snap.transform = snap.transform.translatedBy(x: 0, y: 20 - container.bounds.height * 0.05 / 2 )
-                toView.frame = CGRect(x: 0, y: 35, width: container.bounds.width, height: container.bounds.height - 35)
-                toView.layer.cornerRadius = 10
-                toView.clipsToBounds = true
-            } else {
-                fromView.frame = toView.frame.offsetBy(dx: 0, dy: fromView.bounds.height)
-            }
-        }) { (finish) in
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-        }
     }
 }

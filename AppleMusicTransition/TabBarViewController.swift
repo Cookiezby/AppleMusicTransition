@@ -11,7 +11,9 @@ import UIKit
 class TabBarViewController: UITabBarController {
     
     var playBar: PlayBarView!
-
+    var transitionAnimator = AMTransitionAnimator(duration: 0.5)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         playBar = PlayBarView(frame: CGRect(x: 0, y: view.bounds.height - 120, width: view.bounds.width, height: 70))
@@ -35,12 +37,18 @@ class TabBarViewController: UITabBarController {
 }
 
 extension TabBarViewController: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AMTransitionAnimator(duration: 0.8, isPresenting: true)
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AMTransitionAnimator(duration: 0.8, isPresenting: false)
+//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transitionAnimator.isPresenting = true
+//        return transitionAnimator
+//    }
+//
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transitionAnimator.isPresenting = false
+//        return transitionAnimator
+//    }
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return nil
     }
 }
+
 
