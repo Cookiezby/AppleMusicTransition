@@ -14,10 +14,8 @@
 		76774FE4204D7176008B6F3D /* AppleMusicTransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FE3204D7176008B6F3D /* AppleMusicTransitionTests.swift */; };
 		76774FEF204D739F008B6F3D /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FEE204D739F008B6F3D /* TabBarViewController.swift */; };
 		76774FF2204D78DD008B6F3D /* PlayBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FF1204D78DD008B6F3D /* PlayBarView.swift */; };
-		76774FF5204D814D008B6F3D /* AMTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FF4204D814D008B6F3D /* AMTransitionAnimator.swift */; };
 		76774FF7204D84AB008B6F3D /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FF6204D84AB008B6F3D /* MusicDetailViewController.swift */; };
 		76774FF9204D96FB008B6F3D /* AMPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FF8204D96FB008B6F3D /* AMPresentationController.swift */; };
-		76AADBB4204EDD330045D047 /* AMInteractiveAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AADBB3204EDD330045D047 /* AMInteractiveAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +40,8 @@
 		76774FE5204D7176008B6F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76774FEE204D739F008B6F3D /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		76774FF1204D78DD008B6F3D /* PlayBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBarView.swift; sourceTree = "<group>"; };
-		76774FF4204D814D008B6F3D /* AMTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMTransitionAnimator.swift; sourceTree = "<group>"; };
 		76774FF6204D84AB008B6F3D /* MusicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailViewController.swift; sourceTree = "<group>"; };
 		76774FF8204D96FB008B6F3D /* AMPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMPresentationController.swift; sourceTree = "<group>"; };
-		76AADBB3204EDD330045D047 /* AMInteractiveAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMInteractiveAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,9 +116,7 @@
 		76774FF3204D8131008B6F3D /* Animator */ = {
 			isa = PBXGroup;
 			children = (
-				76774FF4204D814D008B6F3D /* AMTransitionAnimator.swift */,
 				76774FF8204D96FB008B6F3D /* AMPresentationController.swift */,
-				76AADBB3204EDD330045D047 /* AMInteractiveAnimator.swift */,
 			);
 			path = Animator;
 			sourceTree = "<group>";
@@ -231,8 +225,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				76774FEF204D739F008B6F3D /* TabBarViewController.swift in Sources */,
-				76774FF5204D814D008B6F3D /* AMTransitionAnimator.swift in Sources */,
-				76AADBB4204EDD330045D047 /* AMInteractiveAnimator.swift in Sources */,
 				76774FF2204D78DD008B6F3D /* PlayBarView.swift in Sources */,
 				76774FCF204D7176008B6F3D /* AppDelegate.swift in Sources */,
 				76774FF7204D84AB008B6F3D /* MusicDetailViewController.swift in Sources */,

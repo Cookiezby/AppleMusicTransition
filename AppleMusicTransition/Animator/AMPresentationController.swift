@@ -12,8 +12,6 @@ class AMPresentationController: UIPresentationController {
     
     var duration: TimeInterval = 0.6
     var isPresenting = false
-    var isInteractive = false
-    
     var fakeTabbar: UIView?
     
     var blackLayer: UIView = {
@@ -72,7 +70,7 @@ extension AMPresentationController: UIViewControllerAnimatedTransitioning {
             fakeTabbar?.frame = presentingVC.tabBar.frame
             container.addSubview(presented)
             container.addSubview(fakeTabbar!)
-            presented.frame = CGRect(x: 0, y: container.bounds.height - 120, width: container.bounds.width, height: 70)
+            presented.frame = CGRect(x: 0, y: container.bounds.height - 120, width: container.bounds.width, height: 120)
             UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 contentesView.layer.cornerRadius = 10
                 contentesView.clipsToBounds = true
@@ -89,51 +87,25 @@ extension AMPresentationController: UIViewControllerAnimatedTransitioning {
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             })
         } else {
-            if !isInteractive {
-                UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-                    contentesView.layer.cornerRadius = 0
-                    contentesView.transform = CGAffineTransform.identity
-                    contentesView.frame = container.frame
-                    presentingVC.tabBar.frame = presentingVC.tabBar.frame.offsetBy(dx: 0, dy: -presentingVC.tabBar.bounds.height)
-                    presentingVC.playBar.isHidden = true
-                    self.fakeTabbar!.frame = self.fakeTabbar!.frame.offsetBy(dx: 0, dy: -self.fakeTabbar!.bounds.height)
-                    
-                    presentedVC.frameBeforePresent()
-                    presented.layer.cornerRadius = 0
-                    presented.frame = CGRect(x: 0, y: container.bounds.height - 120, width: container.bounds.width, height: 70)
-                }, completion: { (_) in
-                    if !transitionContext.transitionWasCancelled {
-                        self.fakeTabbar?.removeFromSuperview()
-                        self.fakeTabbar = nil
-                        presentingVC.playBar.isHidden = false
-                    }
-                    
-                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-                })
-            } else {
-                UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-                    contentesView.layer.cornerRadius = 0
-                    contentesView.transform = CGAffineTransform.identity
-                    contentesView.frame = container.frame
-                    presentingVC.tabBar.frame = presentingVC.tabBar.frame.offsetBy(dx: 0, dy: -presentingVC.tabBar.bounds.height)
-                    presentingVC.playBar.isHidden = true
-                    self.fakeTabbar!.frame = self.fakeTabbar!.frame.offsetBy(dx: 0, dy: -self.fakeTabbar!.bounds.height)
-                    
-                    presented.layer.cornerRadius = 0
-                    presented.frame = CGRect(x: 0, y: container.bounds.height - 120, width: container.bounds.width, height: 70)
-                }, completion: { (_) in
-                    if !transitionContext.transitionWasCancelled {
-                        self.fakeTabbar?.removeFromSuperview()
-                        self.fakeTabbar = nil
-                        presentingVC.playBar.isHidden = false
-                    }
-                    
-                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-                })
+            UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+                contentesView.layer.cornerRadius = 0
+                contentesView.transform = CGAffineTransform.identity
+                contentesView.frame = container.frame
+                presentingVC.tabBar.frame = presentingVC.tabBar.frame.offsetBy(dx: 0, dy: -presentingVC.tabBar.bounds.height)
+                presentingVC.playBar.isHidden = true
+                self.fakeTabbar!.frame = self.fakeTabbar!.frame.offsetBy(dx: 0, dy: -self.fakeTabbar!.bounds.height)
                 
-                
-                
-            }
+                presentedVC.frameBeforePresent()
+                presented.layer.cornerRadius = 0
+                presented.frame = CGRect(x: 0, y: container.bounds.height - 120, width: container.bounds.width, height: 120)
+            }, completion: { (_) in
+                if !transitionContext.transitionWasCancelled {
+                    self.fakeTabbar?.removeFromSuperview()
+                    self.fakeTabbar = nil
+                    presentingVC.playBar.isHidden = false
+                }
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            })
         }
         
     }
