@@ -17,6 +17,7 @@
 		76774FF5204D814D008B6F3D /* AMTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FF4204D814D008B6F3D /* AMTransitionAnimator.swift */; };
 		76774FF7204D84AB008B6F3D /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FF6204D84AB008B6F3D /* MusicDetailViewController.swift */; };
 		76774FF9204D96FB008B6F3D /* AMPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FF8204D96FB008B6F3D /* AMPresentationController.swift */; };
+		76AADBB4204EDD330045D047 /* AMInteractiveAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AADBB3204EDD330045D047 /* AMInteractiveAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		76774FF4204D814D008B6F3D /* AMTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMTransitionAnimator.swift; sourceTree = "<group>"; };
 		76774FF6204D84AB008B6F3D /* MusicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailViewController.swift; sourceTree = "<group>"; };
 		76774FF8204D96FB008B6F3D /* AMPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMPresentationController.swift; sourceTree = "<group>"; };
+		76AADBB3204EDD330045D047 /* AMInteractiveAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMInteractiveAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			children = (
 				76774FF4204D814D008B6F3D /* AMTransitionAnimator.swift */,
 				76774FF8204D96FB008B6F3D /* AMPresentationController.swift */,
+				76AADBB3204EDD330045D047 /* AMInteractiveAnimator.swift */,
 			);
 			path = Animator;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			files = (
 				76774FEF204D739F008B6F3D /* TabBarViewController.swift in Sources */,
 				76774FF5204D814D008B6F3D /* AMTransitionAnimator.swift in Sources */,
+				76AADBB4204EDD330045D047 /* AMInteractiveAnimator.swift in Sources */,
 				76774FF2204D78DD008B6F3D /* PlayBarView.swift in Sources */,
 				76774FCF204D7176008B6F3D /* AppDelegate.swift in Sources */,
 				76774FF7204D84AB008B6F3D /* MusicDetailViewController.swift in Sources */,

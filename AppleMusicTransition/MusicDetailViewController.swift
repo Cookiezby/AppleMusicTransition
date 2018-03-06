@@ -12,6 +12,7 @@ class MusicDetailViewController: UIViewController {
     let coverImage: UIImageView = {
         let view = UIImageView(image: UIImage(named: "cover"))
         view.clipsToBounds = true
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -20,8 +21,8 @@ class MusicDetailViewController: UIViewController {
         view.backgroundColor = .groupTableViewBackground
         view.addSubview(coverImage)
         frameBeforePresent()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        view.addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+//        view.addGestureRecognizer(tap)
     }
     
     func frameBeforePresent() {

@@ -11,18 +11,21 @@ import UIKit
 class TabBarViewController: UITabBarController {
     
     var playBar: PlayBarView!
-    var transitionAnimator = AMTransitionAnimator(duration: 0.5)
     
     var presentationAnimator: AMPresentationController?
+    var interactiveAnimator: AMInteractiveAnimator?
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBar.barTintColor = .white
         playBar = PlayBarView(frame: CGRect(x: 0, y: view.bounds.height - 120, width: view.bounds.width, height: 70))
         view.addSubview(playBar)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(presentDetail(_:)))
         playBar.addGestureRecognizer(tap)
-        // Do any additional setup after loading the view.
+        
     }
     
     @objc func presentDetail(_ sender: UITapGestureRecognizer) {
@@ -30,6 +33,7 @@ class TabBarViewController: UITabBarController {
         vc.transitioningDelegate = self
         vc.modalPresentationStyle = .custom
         vc.modalPresentationCapturesStatusBarAppearance = true
+        interactiveAnimator = AMInteractiveAnimator(attachTo: vc)
         present(vc, animated: true, completion: nil)
     }
 
@@ -47,12 +51,20 @@ extension TabBarViewController: UIViewControllerTransitioningDelegate {
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         presentationAnimator?.isPresenting = false
+        presentationAnimator?.isInteractive = false
         return presentationAnimator
     }
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         self.presentationAnimator = AMPresentationController(presentedViewController: presented, presenting: presenting)
+        self.interactiveAnimator?.presentationController = presentationAnimator
         return presentationAnimator
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        guard let ia = interactiveAnimator else { return nil }
+        presentationAnimator?.isInteractive = ia.transitionInProgress ? true : false
+        return ia.transitionInProgress ? ia : nil
     }
 }
 
