@@ -18,7 +18,7 @@ class MusicDetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .groupTableViewBackground
         view.addSubview(coverImage)
-        
+        frameAfterPresent()
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         view.addGestureRecognizer(tap)
     }
@@ -39,6 +39,10 @@ class MusicDetailViewController: UIViewController {
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
     }
 
     /*

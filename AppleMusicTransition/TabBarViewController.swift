@@ -27,6 +27,8 @@ class TabBarViewController: UITabBarController {
     @objc func presentDetail(_ sender: UITapGestureRecognizer) {
         let vc = MusicDetailViewController()
         vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .custom
+        vc.modalPresentationCapturesStatusBarAppearance = true
         present(vc, animated: true, completion: nil)
     }
 
@@ -47,7 +49,7 @@ extension TabBarViewController: UIViewControllerTransitioningDelegate {
 //        return transitionAnimator
 //    }
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return nil
+        return AMPresentationController(presentedViewController: presented, presenting: presenting)
     }
 }
 
