@@ -28,23 +28,13 @@ class AMTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromView = transitionContext.view(forKey: .from) else { return }
         guard let toView = transitionContext.view(forKey: .to) else { return }
-        guard var fromVC = transitionContext.viewController(forKey: .from) else { return }
-        guard var toVC = transitionContext.viewController(forKey: .to) else { return }
-       
         let container = transitionContext.containerView
         
-//        if isPresenting {
-//            let toVC = toVC as! MusicDetailViewController
-//            toVC.frameBeforePresent()
-//            let fromVC = fromVC as! TabBarViewController
-//
-//            toView.frame = CGRect(x: 0, y: container.bounds.height - 120, width: container.bounds.width, height: 70)
-//
-//            //snapView = fromView.snapshotView(afterScreenUpdates: false)!
-//            //container.addSubview(snapView)
-//            container.addSubview(toView)
-//
-//            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
+        if isPresenting {
+            toView.frame = CGRect(x: 0, y: container.bounds.height - 120, width: container.bounds.width, height: 70)
+            container.addSubview(toView)
+            
+            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
 //                fromView.layer.cornerRadius = 10
 //                fromView.clipsToBounds = true
 //                fromView.transform = fromView.transform.scaledBy(x: 0.95, y: 0.95)
@@ -54,23 +44,20 @@ class AMTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 //                toView.clipsToBounds = true
 //                toVC.frameAfterPresent()
 //                fromVC.tabBar.frame = fromVC.tabBar.frame.offsetBy(dx: 0, dy: fromVC.tabBar.bounds.height)
-//            }) { (_) in
-//                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-//            }
-//        } else {
-//            let fromVC = fromVC as! MusicDetailViewController
-//            let toVC = toVC as! TabBarViewController
-//
-//            container.insertSubview(toView, belowSubview: fromView)
-//            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseIn, animations: {
-//                toView.frame = container.frame
-//                fromView.frame = CGRect(x: 0, y: container.bounds.height - 120, width: container.bounds.width, height: 120)
-//                fromVC.frameBeforePresent()
-//            }, completion: { (_) in
-//                toView.isHidden = false
-//                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-//            })
-//        }
+                toView.frame = container.frame
+            }) { (_) in
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            }
+        } else {
+            container.insertSubview(toView, belowSubview: fromView)
+            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseIn, animations: {
+                toView.frame = container.frame
+                fromView.frame = CGRect(x: 0, y: container.bounds.height - 120, width: container.bounds.width, height: 120)
+            }, completion: { (_) in
+                toView.isHidden = false
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            })
+        }
         
     }
 }

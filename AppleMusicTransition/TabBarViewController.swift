@@ -13,6 +13,7 @@ class TabBarViewController: UITabBarController {
     var playBar: PlayBarView!
     var transitionAnimator = AMTransitionAnimator(duration: 0.5)
     
+    var presentationAnimator: AMPresentationController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,17 +40,19 @@ class TabBarViewController: UITabBarController {
 }
 
 extension TabBarViewController: UIViewControllerTransitioningDelegate {
-//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        transitionAnimator.isPresenting = true
-//        return transitionAnimator
-//    }
-//
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        transitionAnimator.isPresenting = false
-//        return transitionAnimator
-//    }
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        presentationAnimator?.isPresenting = true
+        return presentationAnimator
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        presentationAnimator?.isPresenting = false
+        return presentationAnimator
+    }
+    
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return AMPresentationController(presentedViewController: presented, presenting: presenting)
+        self.presentationAnimator = AMPresentationController(presentedViewController: presented, presenting: presenting)
+        return presentationAnimator
     }
 }
 

@@ -11,6 +11,7 @@ import UIKit
 class MusicDetailViewController: UIViewController {
     let coverImage: UIImageView = {
         let view = UIImageView(image: UIImage(named: "cover"))
+        view.clipsToBounds = true
         return view
     }()
     
@@ -18,17 +19,19 @@ class MusicDetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .groupTableViewBackground
         view.addSubview(coverImage)
-        frameAfterPresent()
+        frameBeforePresent()
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         view.addGestureRecognizer(tap)
     }
     
     func frameBeforePresent() {
+        coverImage.layer.cornerRadius = 3
         coverImage.frame = CGRect(x: 20, y: 10, width: 50, height: 50)
     }
     
     func frameAfterPresent() {
         let coverWidth = view.bounds.width * 0.8
+        coverImage.layer.cornerRadius = 8
         coverImage.frame = CGRect(x: (view.bounds.width - coverWidth) / 2, y: 30, width: coverWidth, height: coverWidth)
     }
 
