@@ -99,16 +99,6 @@ class MusicDetailViewController: UIViewController {
         view.frame = CGRect(x: 0, y: originFrame.origin.y + (originFrame.height - 35) * progress, width: view.bounds.width, height: view.bounds.height)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
