@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4CFB10CA204F7A0F0053C27C /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB10C9204F7A0F0053C27C /* Const.swift */; };
+		4CFB10CE204F963A0053C27C /* AMPresentInteractiveAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB10CD204F963A0053C27C /* AMPresentInteractiveAnimator.swift */; };
 		76774FCF204D7176008B6F3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FCE204D7176008B6F3D /* AppDelegate.swift */; };
 		76774FD4204D7176008B6F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76774FD2204D7176008B6F3D /* Main.storyboard */; };
 		76774FD6204D7176008B6F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76774FD5204D7176008B6F3D /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		4CFB10C9204F7A0F0053C27C /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		4CFB10CD204F963A0053C27C /* AMPresentInteractiveAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMPresentInteractiveAnimator.swift; sourceTree = "<group>"; };
 		76774FCB204D7176008B6F3D /* AppleMusicTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleMusicTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76774FCE204D7176008B6F3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76774FD3204D7176008B6F3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				76774FF8204D96FB008B6F3D /* AMPresentationController.swift */,
+				4CFB10CD204F963A0053C27C /* AMPresentInteractiveAnimator.swift */,
 			);
 			path = Animator;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				76774FEF204D739F008B6F3D /* TabBarViewController.swift in Sources */,
 				76774FF2204D78DD008B6F3D /* PlayBarView.swift in Sources */,
 				76774FCF204D7176008B6F3D /* AppDelegate.swift in Sources */,
+				4CFB10CE204F963A0053C27C /* AMPresentInteractiveAnimator.swift in Sources */,
 				76774FF7204D84AB008B6F3D /* MusicDetailViewController.swift in Sources */,
 				76774FF9204D96FB008B6F3D /* AMPresentationController.swift in Sources */,
 				4CFB10CA204F7A0F0053C27C /* Const.swift in Sources */,

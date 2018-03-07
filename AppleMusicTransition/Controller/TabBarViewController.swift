@@ -10,6 +10,7 @@ import UIKit
 class TabBarViewController: UITabBarController {
     var playBar: PlayBarView!
     var presentationAnimator: AMPresentationController?
+    var presentInteractiveAnimator: AMPresentInteractiveAnimator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,21 +18,28 @@ class TabBarViewController: UITabBarController {
         playBar = PlayBarView(frame: CGRect(x: 0, y: view.bounds.height - 120, width: view.bounds.width, height: 120))
         view.insertSubview(playBar, belowSubview: tabBar)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(presentDetail(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         playBar.addGestureRecognizer(tap)
+        
+        presentInteractiveAnimator = AMPresentInteractiveAnimator(attachTo: playBar)
+        presentInteractiveAnimator?.delegate = self
     }
     
-    @objc func presentDetail(_ sender: UITapGestureRecognizer) {
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        presentDetail()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    private func presentDetail() {
         let vc = MusicDetailViewController()
         vc.transitioningDelegate = self
         vc.modalPresentationStyle = .custom
         vc.modalPresentationCapturesStatusBarAppearance = true
         vc.delegate = self
         present(vc, animated: true, completion: nil)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }
 
@@ -50,12 +58,22 @@ extension TabBarViewController: UIViewControllerTransitioningDelegate {
         self.presentationAnimator = AMPresentationController(presentedViewController: presented, presenting: presenting)
         return presentationAnimator
     }
+    
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return presentInteractiveAnimator
+    }
 }
 
 extension TabBarViewController: MusicDetailViewControllerDelegate {
     func update(_ progress: CGFloat) {
         guard let currView = selectedViewController?.view else { return }
         currView.transform = CGAffineTransform.identity.scaledBy(x: 0.95 + 0.05 * progress, y: 0.95 + 0.05 * progress)
+    }
+}
+
+extension TabBarViewController: AMPresentInteractiveDelegate {
+    func presentInteractive() {
+        presentDetail()
     }
 }
 
