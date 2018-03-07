@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CFB10CA204F7A0F0053C27C /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB10C9204F7A0F0053C27C /* Const.swift */; };
 		76774FCF204D7176008B6F3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76774FCE204D7176008B6F3D /* AppDelegate.swift */; };
 		76774FD4204D7176008B6F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76774FD2204D7176008B6F3D /* Main.storyboard */; };
 		76774FD6204D7176008B6F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76774FD5204D7176008B6F3D /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4CFB10C9204F7A0F0053C27C /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		76774FCB204D7176008B6F3D /* AppleMusicTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleMusicTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76774FCE204D7176008B6F3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76774FD3204D7176008B6F3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,6 +64,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4CFB10C8204F791F0053C27C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				76774FEE204D739F008B6F3D /* TabBarViewController.swift */,
+				76774FF6204D84AB008B6F3D /* MusicDetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		76774FC2204D7176008B6F3D = {
 			isa = PBXGroup;
 			children = (
@@ -83,11 +94,11 @@
 		76774FCD204D7176008B6F3D /* AppleMusicTransition */ = {
 			isa = PBXGroup;
 			children = (
+				4CFB10C8204F791F0053C27C /* Controller */,
 				76774FF3204D8131008B6F3D /* Animator */,
 				76774FF0204D78CC008B6F3D /* View */,
 				76774FCE204D7176008B6F3D /* AppDelegate.swift */,
-				76774FEE204D739F008B6F3D /* TabBarViewController.swift */,
-				76774FF6204D84AB008B6F3D /* MusicDetailViewController.swift */,
+				4CFB10C9204F7A0F0053C27C /* Const.swift */,
 				76774FD2204D7176008B6F3D /* Main.storyboard */,
 				76774FD5204D7176008B6F3D /* Assets.xcassets */,
 				76774FD7204D7176008B6F3D /* LaunchScreen.storyboard */,
@@ -229,6 +240,7 @@
 				76774FCF204D7176008B6F3D /* AppDelegate.swift in Sources */,
 				76774FF7204D84AB008B6F3D /* MusicDetailViewController.swift in Sources */,
 				76774FF9204D96FB008B6F3D /* AMPresentationController.swift in Sources */,
+				4CFB10CA204F7A0F0053C27C /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

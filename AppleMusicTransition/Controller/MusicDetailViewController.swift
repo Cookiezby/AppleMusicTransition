@@ -13,33 +13,33 @@ protocol MusicDetailViewControllerDelegate: class{
 }
 
 class MusicDetailViewController: UIViewController {
-    let coverImage: UIImageView = {
+    private let coverImage: UIImageView = {
         let view = UIImageView(image: UIImage(named: "cover"))
         view.clipsToBounds = true
         view.isUserInteractionEnabled = true
         return view
     }()
     
-    let headerButton: UIButton = {
+    private let headerButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 2
         button.backgroundColor = UIColor.lightGray
         return button
     }()
 
-    var originFrame = CGRect.zero
+    private var originFrame = CGRect(x: 0, y: 0, width: 0, height: 1)
     weak var delegate: MusicDetailViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .groupTableViewBackground
+        view.backgroundColor = .white
         view.addSubview(coverImage)
         view.addSubview(headerButton)
         headerButton.addTarget(self, action: #selector(handleTap(_:)), for: .touchUpInside)
-        frameBeforePresent()
-
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
         view.addGestureRecognizer(pan)
+        
+        frameBeforePresent()
     }
     
     func frameBeforePresent() {
@@ -58,21 +58,15 @@ class MusicDetailViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
     }
     
     @objc private func handlePan(gesture: UIPanGestureRecognizer) {
         let viewTransition = gesture.translation(in: view)
-        let progress = viewTransition.y / (originFrame.height - 35)
-        
+        let progress = viewTransition.y / (originFrame.height - Const.MusicPlayBarHeight)
         switch gesture.state {
         case .began:
             originFrame = view.frame
@@ -84,7 +78,8 @@ class MusicDetailViewController: UIViewController {
             if progress > 0.2 {
                 dismiss(animated: true, completion: nil)
             } else {
-                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                UIView.animate(withDuration: 0.2 + 0.2 * Double(progress), delay: 0, options: .curveEaseInOut, animations: {
+                    self.delegate?.update(0)
                     self.view.frame = self.originFrame
                 })
             }
@@ -94,13 +89,12 @@ class MusicDetailViewController: UIViewController {
         }
     }
 
-    func update(_ progress: CGFloat) {
+    private func update(_ progress: CGFloat) {
         delegate?.update(progress)
-        view.frame = CGRect(x: 0, y: originFrame.origin.y + (originFrame.height - 35) * progress, width: view.bounds.width, height: view.bounds.height)
+        view.frame = CGRect(x: 0, y: originFrame.origin.y + (originFrame.height - Const.MusicPlayBarHeight) * progress, width: view.bounds.width, height: view.bounds.height)
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
 }

@@ -14,7 +14,7 @@ class AMPresentationController: UIPresentationController {
     var isPresenting = false
     var fakeTabbar: UIView?
     
-    var blackLayer: UIView = {
+    private var blackLayer: UIView = {
         let view = UIView()
         view.backgroundColor = .black
         view.alpha = 0.0
@@ -22,8 +22,6 @@ class AMPresentationController: UIPresentationController {
     }()
     
     override func presentationTransitionWillBegin() {
-        guard let container = containerView else { return }
-        //guard let toView = presentedView else { return }
         guard let fromView = presentingViewController.view else { return }
         guard let coordinator = presentedViewController.transitionCoordinator else { return }
         guard let presentingVC = presentingViewController as? TabBarViewController else { return }
@@ -38,6 +36,7 @@ class AMPresentationController: UIPresentationController {
         }
     }
 }
+
 // for dismiss
 extension AMPresentationController {
     override func dismissalTransitionWillBegin() {
@@ -60,8 +59,7 @@ extension AMPresentationController: UIViewControllerAnimatedTransitioning {
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let presented = presentedView else { return }
         guard let container = containerView else { return }
-        guard let presenting = presentingViewController.view else { return }
-        
+      
         guard let presentedVC = presentedViewController as? MusicDetailViewController else { return }
         guard let presentingVC = presentingViewController as? TabBarViewController else { return }
         guard let contentesView = presentingVC.selectedViewController?.view else { return }
@@ -70,7 +68,7 @@ extension AMPresentationController: UIViewControllerAnimatedTransitioning {
             fakeTabbar?.frame = presentingVC.tabBar.frame
             container.addSubview(presented)
             container.addSubview(fakeTabbar!)
-            presented.frame = CGRect(x: 0, y: container.bounds.height - 120, width: container.bounds.width, height: 120)
+            presented.frame = CGRect(x: 0, y: container.bounds.height - Const.MusicPlayBarHeight, width: container.bounds.width, height: Const.MusicPlayBarHeight)
             UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 contentesView.layer.cornerRadius = 10
                 contentesView.clipsToBounds = true
@@ -80,7 +78,7 @@ extension AMPresentationController: UIViewControllerAnimatedTransitioning {
                 self.fakeTabbar!.frame = self.fakeTabbar!.frame.offsetBy(dx: 0, dy: self.fakeTabbar!.bounds.height)
                 
                 presentedVC.frameAfterPresent()
-                presented.frame = container.frame.offsetBy(dx: 0, dy: 35)
+                presented.frame = CGRect(x: 0, y: Const.MusicDetailTopPadding, width: container.bounds.width, height: container.bounds.height - Const.MusicDetailTopPadding)
                 presented.layer.cornerRadius = 10
                 presented.clipsToBounds = true
             }, completion: { (_) in
@@ -97,7 +95,7 @@ extension AMPresentationController: UIViewControllerAnimatedTransitioning {
                 
                 presentedVC.frameBeforePresent()
                 presented.layer.cornerRadius = 0
-                presented.frame = CGRect(x: 0, y: container.bounds.height - 120, width: container.bounds.width, height: 120)
+                presented.frame = CGRect(x: 0, y: container.bounds.height - Const.MusicPlayBarHeight, width: container.bounds.width, height: Const.MusicPlayBarHeight)
             }, completion: { (_) in
                 if !transitionContext.transitionWasCancelled {
                     self.fakeTabbar?.removeFromSuperview()
